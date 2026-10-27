@@ -17,3 +17,5 @@ class Bak:
             print("Копирование успешно завершено!")
         except PermissionError:
             print(f"Устройство не готово {src}")
+        except IndexError:
+            print("Ошибка чтения файла")
