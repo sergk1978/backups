@@ -1,0 +1,2 @@
+G:\READY_PROJECTS\Сергей_python\PyCharm\Backup\test\source_обмен
+G:\READY_PROJECTS\Сергей_python\PyCharm\Backup\test\destination_обмен
