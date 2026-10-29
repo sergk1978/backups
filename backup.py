@@ -1,4 +1,5 @@
 import shutil
+from datetime import datetime
 
 class Bak:
     def __file_read(self):
@@ -19,3 +20,6 @@ class Bak:
             print(f"Устройство не готово {src}")
         except IndexError:
             print("Ошибка чтения файла")
+
+    def time_copy(self):
+        return datetime.now()
