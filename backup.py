@@ -22,12 +22,17 @@ class Bak:
             # dst = path[1].strip()
             #print(self.src)
             #print(self.dst)
-            shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
-            print("Копирование успешно завершено!")
+            if self.src != self.dst:
+                shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
+                print("Копирование успешно завершено!")
+            else:
+                print("Источник и папка назначения совпадают")    
         except PermissionError:
             print(f"Устройство не готово {self.src}")
         except IndexError:
             print("Ошибка чтения файла")
+        except ValueError: 
+            print("Отсутствует один, или оба пути назначения")
 
     def time_copy(self):
         return datetime.now()
