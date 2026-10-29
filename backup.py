@@ -1,17 +1,22 @@
 import shutil
 from datetime import datetime
+from filesize import Size
 
 class Bak:
+    def __init__(self, path):
+        self.path = path
+        self.s = Size('D:\\Python\\backups\\test\\destination_обмен')
+
     def __file_read(self):
-        with open('path.txt', 'r', encoding='utf-8') as file:
+        with open(self.path, 'r', encoding='utf-8') as file:
             lines = file.readlines()
             return lines
 
     def backup(self):
         try:
             path = self.__file_read()
-            src = path[0][0:-1]
-            dst = path[1]
+            src = path[0][0:-1].strip()
+            dst = path[1].strip()
             # print(src)
             # print(dst)
             shutil.copytree(src, dst, dirs_exist_ok=True)
