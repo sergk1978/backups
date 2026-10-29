@@ -1,5 +1,6 @@
 import shutil
 from datetime import datetime
+from pathlib import Path
 from filesize import Size
 
 class Bak:
@@ -23,7 +24,8 @@ class Bak:
             #print(self.src)
             #print(self.dst)
             if self.src != self.dst:
-                shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
+                shutil.copytree(self.src, self.dst+self.__new_folder(), dirs_exist_ok=True)
+                #print(self.new_folder())
                 print("Копирование успешно завершено!")
             else:
                 print("Источник и папка назначения совпадают")    
@@ -36,3 +38,6 @@ class Bak:
 
     def time_copy(self):
         return datetime.now()
+
+    def __new_folder(self):
+        return f'/{Path(self.time_copy().strftime("%Y-%m-%d"))}'
