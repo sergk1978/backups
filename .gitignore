@@ -4,3 +4,7 @@
 .venv
 venv
 __pycache__/
+build/
+main.spec
+dist/
+main.exe

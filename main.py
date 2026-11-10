@@ -4,9 +4,10 @@ from backup import Bak
 
 if __name__ == '__main__':
     bak = Bak('path.txt')
-    start = bak.time_copy()
-    bak.backup()
-    stop = bak.time_copy()
+    start = bak.time_copy()   # старт программы
+    bak.create_folder()       # создание папки с датой
+    bak.backup()              # копирование с диска на диск
+    stop = bak.time_copy()    # завершение программы
     time_end = stop-start
     print(f'Время выполнения: - {time_end} размер: - {bak.s.format_size()}')
 
