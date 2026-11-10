@@ -1,4 +1,5 @@
 from backup import Bak
+import time
 
 
 
@@ -10,4 +11,4 @@ if __name__ == '__main__':
     stop = bak.time_copy()    # завершение программы
     time_end = stop-start
     print(f'Время выполнения: - {time_end} размер: - {bak.s.format_size()}')
-
+    input('Нажмите Enter для выхода')

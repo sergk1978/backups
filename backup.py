@@ -14,9 +14,13 @@ class Bak:
         self.s = Size(self.dst)                    # 'D:\\Python\\backups\\test\\destination_обмен'
 
     def __file_read(self):
-        with open(self.path, 'r', encoding='utf-8') as file:
-            lines = file.readlines()
-            return lines
+        if Path(self.path).exists():
+            with open(self.path, 'r', encoding='utf-8') as file:
+                lines = file.readlines()
+                return lines
+        else:
+            print("Отсутствует файл: path.txt")
+            exit(1)
 
     def time_copy(self):
         return datetime.now()
@@ -43,7 +47,7 @@ class Bak:
                     shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
                     print("Копирование успешно завершено!")
             else:
-                print("Копирование отменено!")        
+                print("Копирование отменено!")
         except PermissionError:
             print(f"Устройство не готово {self.src}")
         except IndexError:
