@@ -19,10 +19,12 @@ class Bak:
                 lines = file.readlines()
                 if len(lines)<2:
                     print("в файле path.txt отсутствуют один, или оба пути назначения!")
+                    input('Нажмите Enter для выхода...')
                     exit(1)
                 return lines
         else:
             print("Отсутствует файл: path.txt")
+            input('Нажмите Enter для выхода...')
             exit(1)
 
     def time_copy(self):
@@ -37,25 +39,22 @@ class Bak:
             if not Path(self.dst).exists():
                 Path(self.dst).mkdir(parents=True, exist_ok=True) 
         except FileNotFoundError:
-            print(f"Системе не удается создать указанный путь: {self.dst}")
+            print(f"Системе не удается создать папку назначения по указаннному пути: {self.dst}")
+            input('Нажмите Enter для выхода...')
+            exit(1)
+
 
     def backup(self):
-        try:
-            # path = self.__file_read()
-            # src = path[0][0:-1].strip()
-            # dst = path[1].strip()
-            #print(self.src)
-            #print(self.dst)
-            if Path(self.dst).exists():
-                    shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
-                    print("Копирование успешно завершено!")
-            else:
-                print("Копирование отменено!")
-        except PermissionError:
-            print(f"Устройство не готово {self.src}")
-        except IndexError:
-            print("Ошибка чтения файла")
-        #except ValueError: 
-            #print("Отсутствует один, или оба пути назначения")
+        # path = self.__file_read()
+        # src = path[0][0:-1].strip()    
+        # dst = path[1].strip()
+        #print(self.src)
+        #print(self.dst)
+        if Path(self.dst).exists():
+            shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
+            print("Копирование успешно завершено!")
+        else:
+            print("Копирование отменено!")
+
 
 
