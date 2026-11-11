@@ -17,6 +17,9 @@ class Bak:
         if Path(self.path).exists():
             with open(self.path, 'r', encoding='utf-8') as file:
                 lines = file.readlines()
+                if len(lines)<2:
+                    print("в файле path.txt отсутствуют один, или оба пути назначения!")
+                    exit(1)
                 return lines
         else:
             print("Отсутствует файл: path.txt")
@@ -52,7 +55,7 @@ class Bak:
             print(f"Устройство не готово {self.src}")
         except IndexError:
             print("Ошибка чтения файла")
-        except ValueError: 
-            print("Отсутствует один, или оба пути назначения")
+        #except ValueError: 
+            #print("Отсутствует один, или оба пути назначения")
 
 
