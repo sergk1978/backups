@@ -6,19 +6,20 @@ from pathlib import Path
 
 class Bak:
     def __init__(self, path):   
-        self.path = path                           # 'path.txt'
-        self.src, self.dst = self.__file_read()
+        self.path = path                                       # 'path.txt'
+        self.src, self.dst, self.pattern = self.__file_read()
         self.src = self.src.strip('\n').strip()
         self.dst = self.dst.strip()
         self.dst = self.__new_folder()
-        self.s = Size(self.dst)                    # 'D:\\Python\\backups\\test\\destination_обмен'
+        self.pattern = self.pattern.strip().split(',')        # pattern (исключаемые каталоги и файлы)
+        self.s = Size(self.dst)                               # размер скопированной папки
 
     def __file_read(self):
         if Path(self.path).exists():
             with open(self.path, 'r', encoding='utf-8') as file:
                 lines = file.readlines()
-                if len(lines)<2:
-                    print("в файле path.txt отсутствуют один, или оба пути назначения!")
+                if len(lines)<3:
+                    print("в файле path.txt отсутствуют один, или оба пути назначения!, и(или) паттерн включения каталогов(файлов)")
                     input('Нажмите Enter для выхода...')
                     exit(1)
                 return lines
@@ -51,7 +52,8 @@ class Bak:
         # dst = path[1].strip()
         #print(self.src)
         #print(self.dst)
-        copytree(self.src, self.dst, ignore=ignore_patterns('.sys'), dirs_exist_ok=True)
+        #print(self.pattern)
+        copytree(self.src, self.dst, ignore=ignore_patterns(*self.pattern), dirs_exist_ok=True)
         print("Копирование успешно завершено!")
 
             

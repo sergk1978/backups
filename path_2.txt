@@ -1,0 +1,3 @@
+D:\Python\backups\test1
+D:\Python\backups\test2
+.sys,yyy
