@@ -1,4 +1,4 @@
-import shutil
+from shutil import copytree, ignore_patterns
 from datetime import datetime
 from filesize import Size
 from pathlib import Path
@@ -40,6 +40,7 @@ class Bak:
                 Path(self.dst).mkdir(parents=True, exist_ok=True) 
         except FileNotFoundError:
             print(f"Системе не удается создать папку назначения по указаннному пути: {self.dst}")
+            print("Копирование отменено!")
             input('Нажмите Enter для выхода...')
             exit(1)
 
@@ -50,11 +51,10 @@ class Bak:
         # dst = path[1].strip()
         #print(self.src)
         #print(self.dst)
-        if Path(self.dst).exists():
-            shutil.copytree(self.src, self.dst, dirs_exist_ok=True)
-            print("Копирование успешно завершено!")
-        else:
-            print("Копирование отменено!")
+        copytree(self.src, self.dst, ignore=ignore_patterns('.sys'), dirs_exist_ok=True)
+        print("Копирование успешно завершено!")
+
+            
 
 
 
