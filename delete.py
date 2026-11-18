@@ -23,15 +23,14 @@ class Delete:
     def dir_delete(self):
         if len(self.dir_list())>0:
             for dir in self.dir_list():
-                #rmtree(str(dir)[len(str(self.path))+1:])
-                rmtree(dir)
+                #rmtree(dir)
                 print(f'Удалена папка - {dir}')
         else:
             print('Каталогов, соответствующих условию, для удаления нет')  
 
     def __dir_time_delta(self, dir):      
         # отклонение времени создания файла(папки) от текущего времени                
-        dir_timestamp = Path(dir).stat().st_mtime
+        dir_timestamp = Path(dir).stat().st_ctime
         #print(dir_timestamp)
         dir_delta = (time.time() - dir_timestamp) // (60 * 60 * 24) 
         return int(dir_delta)
@@ -39,7 +38,7 @@ class Delete:
 
 
 
-d = Delete('D:\\Python\\backups\\test3\\arhivator', 10) 
-print(d.dir_list())
-d.dir_delete()
+# d = Delete('D:\\Python\\backups\\test3\\arhivator', 10) 
+# print(d.dir_list())
+# d.dir_delete()
 #print(d.__dir_time_delta('main.py'))   

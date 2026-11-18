@@ -1,3 +1,4 @@
-\\192.168.42.83\Обмен
-F:\обмен
-.sys
+D:\Python\backups\test2
+D:\Python\backups\test1
+.sys,yyy
+0
