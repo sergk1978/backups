@@ -10,3 +10,4 @@ dist/
 main.exe
 obmen_copy.spec
 test*/
+test.py
