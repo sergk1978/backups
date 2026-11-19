@@ -1,1 +1,1 @@
-pyinstaller --onefile --name='obmen_copy' main.py
+pyinstaller --onefile --name='backup_copy' main.py
