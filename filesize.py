@@ -6,7 +6,7 @@ class Size:
 
     def get_dir_size(self, path):
         total_size = 0
-        for file_path in Path(path).rglob('*'):
+        for file_path in Path(path).rglob('*'):   # поиск всех подпапок и файлов в созданной папке назначения
             if file_path.is_file():
                 total_size += file_path.stat().st_size
         return total_size

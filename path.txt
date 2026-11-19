@@ -1,4 +1,4 @@
 D:\Python\backups\test2
 D:\Python\backups\test1
-.sys,yyy
-0
+.sys
+1
