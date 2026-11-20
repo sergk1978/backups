@@ -1,4 +1,4 @@
-D:\Python\backups\test2
-D:\Python\backups\test1
+\\192.168.42.83\Обмен
+F:\обмен
 .sys
-1
+90

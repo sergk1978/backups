@@ -1,6 +1,7 @@
 from pathlib import Path
 from shutil import rmtree
 import time
+import stat
 
 class Delete:
     def __init__(self, path, days):  
@@ -22,7 +23,14 @@ class Delete:
     
     def dir_delete(self):
         if len(self.dir_list())>0:
+            print("Удаление началось ...")
             for dir in self.dir_list():
+                #############
+                # замена прав у папок и файлов на полные во избежание ошибки PermissionError: [WinError 5] Отказано в доступе
+                dir = Path(dir)
+                for item in dir.rglob('*'):
+                    item.chmod(stat.S_IRWXU)      
+                ##############
                 rmtree(dir)
                 print(f'Удалена папка - {dir}')
         else:
